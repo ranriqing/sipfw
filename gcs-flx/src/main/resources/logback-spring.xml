@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 参考：https://blog.csdn.net/han_xingyuan/article/details/136904738 -->
+<!-- Logger（日志器）收集日志 → Appender 负责物理输出（控制台 / 文件） -->
+<configuration>
+    <contextName>logback</contextName>
+
+    <!-- ===================== 全局属性配置（多环境适配） ===================== -->
+    <!-- 从 application.yml 读取 app.name / app.log-path（可按 profile 覆盖） -->
+    <springProperty scope="context" name="app.name" source="app.name" defaultValue="flx"/>
+    <springProperty scope="context" name="log.path" source="app.log-path" defaultValue="/var/log"/>
+    <property name="maxHistory" value="30"/>         <!-- 日志文件最大保留天数 -->
+
+    <!-- 测试环境（test）：不保留历史日志 -->
+    <springProfile name="test">
+        <property name="maxHistory" value="0"/>
+    </springProfile>
+
+    <!-- ===================== 日志格式转换规则（日志增强） ===================== -->
+    <!-- 注册彩色日志转换器（控制台输出日志带颜色，便于区分级别） -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <!-- 简化异常堆栈信息（去除多余空格） -->
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <!-- 扩展异常堆栈信息（显示更多细节） -->
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <!-- 控制台日志输出格式（包含请求ID、进程ID、线程、日志级别等） -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} [%X{request-id}] %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <!-- ===================== 日志输出端（Appender）配置 ===================== -->
+    <!-- 通用控制台输出Appender（带级别过滤，仅输出DEBUG及以上） -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 阈值过滤器：只输出debug及以上级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 滚动文件输出Appender（核心：按时间+大小分割，生产环境核心配置） -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/${app.name}.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{request-id}] %-5level %logger{50} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!-- 滚动策略：按时间（天）+ 大小分割 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/${app.name}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>300MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- ===================== 第三方组件/业务包日志级别定制 ===================== -->
+    <!-- Druid数据库连接池日志：打印SQL语句和参数（DEBUG级别便于调试） -->
+    <logger name="druid.sql.Statement" level="DEBUG" />  <!-- SQL语句 -->
+    <logger name="druid.sql.Param" level="DEBUG" />      <!-- SQL参数 -->
+    <logger name="druid.sql.ResultSet" level="INFO" />   <!-- 结果集（INFO级别减少日志量） -->
+    <logger name="druid.sql.Connection" level="INFO" />  <!-- 连接信息 -->
+
+    <!-- 禁用Swagger冗余日志 -->
+    <logger name="springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator" level="OFF" />
+
+    <!-- 业务包日志级别定制：按需调整不同模块的日志粒度 -->
+    <logger name="gcs.app.ugrp.mapper" level="INFO" />
+    <logger name="gcs.app.terumo.mapper" level="INFO" />
+    <logger name="gcs.modules.message.mapper" level="INFO" />
+
+    <!-- ===================== 根日志器（全局默认配置） ===================== -->
+    <!-- 生产环境根日志级别：INFO，输出到滚动文件 + CONSOLE -->
+    <root level="info">
+        <appender-ref ref="ROLLING_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- 开发环境根日志级别：INFO，仅输出到控制台 -->
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+</configuration>

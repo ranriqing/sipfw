@@ -1,0 +1,2 @@
+见 src/components/comp_form/GTinymce.vue
+资源被Tinymce组件动态加载

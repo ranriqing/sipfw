@@ -1,0 +1,103 @@
+@import '~@/assets/scss/theme.scss';
+
+/* @@@@@ 基础颜色 @@@@@ */
+// primary
+.primary-light{
+  color: $type-primary-light;
+}
+.primary-disabled{
+  color: $type-primary-disabled;
+}
+.primary{
+  color: $type-primary;
+}
+.primary-dark{
+  color: $type-primary-dark;
+}
+
+// success
+.success-light{
+  color: $type-success-light;;
+}
+.success-disabled{
+  color: $type-success-disabled;
+}
+.success{
+  color: $type-success;
+}
+.success-dark{
+  color: $type-success-dark;
+}
+
+// warning
+.warning-light{
+  color: $type-warning-light;;
+}
+.warning-disabled{
+  color: $type-warning-disabled;
+}
+.warning{
+  color: $type-warning;
+}
+.warning-dark{
+  color: $type-warning-dark;
+}
+
+// error
+.error-light{
+  color: $type-error-light;;
+}
+.error-disabled{
+  color: $type-error-disabled;
+}
+.error{
+  color: $type-error;
+}
+.error-dark{
+  color: $type-error-dark;
+}
+.anticon{
+  &.error-dark{
+    color: $type-error-dark;
+  }
+  &.warning-dark{
+    color: $type-warning-dark;
+  }
+  &.success-dark{
+    color: $type-success-dark;
+  }
+  &.primary-dark{
+    color: $type-primary-dark;
+  }
+}
+
+// text
+.text-light{
+  color: $light-color;
+}
+.text-tips{
+  color: $tips-color;
+}
+.text-content{
+  color: $content-color;
+}
+.text-main{
+  color: $main-color;
+}
+.text-green{
+  color: #52c41a;
+}
+.text-blue{
+  color: #2eabff;
+}
+
+
+// other
+.bg-color{
+  color: $bg-color;
+}
+.border-color{
+  color: $border-color;
+}
+
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gcs.app.ugrp.mapper.GcsUserLinkMapper">
+    
+    <resultMap id="gcsUserLinkResult" type="GcsUserLink" >
+        <result property="id"               column="id"    />
+        <result property="gcsUserId"        column="gcs_user_id"    />
+        <result property="referenceClass"   column="reference_class"    />
+        <result property="referenceId"      column="reference_id"    />
+        <result property="referenceType"    column="reference_type"    />
+        <result property="username"         column="username"    />
+        <result property="nickname"         column="nickname"    />
+    </resultMap>
+
+    <sql id="selectRefTemplate">
+        SELECT l.*, u.username, u.nickname
+        FROM gcs_user_link l
+        LEFT JOIN gcs_user u ON l.gcs_user_id = u.id
+    </sql>
+
+    <select id="selectListByReference" resultMap="gcsUserLinkResult">
+        <include refid="selectRefTemplate"/>
+        <where>
+            AND l.reference_id = #{referenceId}
+            AND l.reference_class = #{referenceClass}
+            <if test="referenceType != null "> AND l.reference_type = #{referenceType}</if>
+        </where>
+    </select>
+</mapper>

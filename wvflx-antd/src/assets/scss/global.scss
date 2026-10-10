@@ -1,0 +1,67 @@
+@import '~@/assets/scss/flex.scss';
+@import '~@/assets/scss/color.scss';
+@import '~@/assets/scss/theme.scss';
+@import '~@/assets/scss/patch-antd.scss';
+@import '~@/assets/scss/patch-iconfont.scss';
+@import '~@/assets/scss/patch-mobile.scss';
+@import '~@/assets/scss/segment-animate.scss';
+@import '~@/assets/scss/segment-page.scss';
+@import '~@/assets/scss/segment-pop.scss';
+@import '~@/assets/scss/segment-tmpl.scss';
+
+/* @@@@@ 页面样式 @@@@@ */
+body {
+  // 开启页面垂直滚动
+  overflow-y: auto;
+  #app {
+    // Visual Viewport High
+    min-height: 100vh;
+    background-color: $bg-color;
+  }
+}
+
+/* @@@@@ 主体样式 @@@@@ */
+#app{
+  .layout {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* @@@@@ 滚动条 @@@@@ */
+::-webkit-scrollbar{
+  width:10px;
+  height:8px
+}
+::-webkit-scrollbar-button{
+  width:8px;
+  height:0
+}
+::-webkit-scrollbar-track{
+  background:rgba(245, 245, 245, 0.7);
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.2);
+  -webkit-transition:.3s;
+  transition:.3s;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(0,0,0,.3);
+}
+::-webkit-scrollbar-thumb:active{
+  background-color: rgba(0,0,0,.3);
+}
+
+/* @@@@@ 表格行背景色 @@@@@ */
+tr.row-gray  { background-color: #e5e5e5; }
+tr.row-green { background-color: #f6ffed; }
+tr.row-red   { background-color: #fff2f0; }
+tr.row-yellow{ background-color: #fffbe6; }
+tr.row-blue  { background-color: #e6f7ff; }
+
+// tr.row-gray:hover  { background-color: #f0f0f0; }
+// tr.row-green:hover { background-color: #d9f7be; }
+// tr.row-red:hover   { background-color: #ffd8d2; }
+// tr.row-yellow:hover{ background-color: #fff1b8; }
+// tr.row-blue:hover  { background-color: #bae7ff; }

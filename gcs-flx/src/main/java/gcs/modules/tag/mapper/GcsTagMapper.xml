@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gcs.modules.tag.mapper.GcsTagMapper">
+
+    <select id="listNamesByReferenceClass" resultType="java.lang.String">
+        SELECT DISTINCT t.name
+        FROM gcs_tag t
+        INNER JOIN gcs_tag_link l ON l.gcs_tag_id = t.id
+        WHERE l.reference_class = #{referenceClass}
+        ORDER BY t.name
+    </select>
+</mapper>

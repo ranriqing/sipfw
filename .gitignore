@@ -1,0 +1,25 @@
+# Build output
+target/
+dist/
+dist.zip
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+
+# Local env
+.env.local
+.env.*.local

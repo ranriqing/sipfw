@@ -1,0 +1,127 @@
+/* @@@@@ Flex布局 @@@@@ */
+// https://halfapx.com/left-middle-right-layout-with-flexbox-and-float/
+// http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+
+.flex {
+  // 效果见：https://codepen.io/enxaneta/full/adLPwv/
+  display: flex;
+  // 主轴方向
+  &.flex-row{
+    flex-direction: row;
+  }
+  &.flex-row-reverse{
+    flex-direction: row-reverse;
+  }
+  &.flex-column{
+    flex-direction: column;
+  }
+  &.flex-column-reverse{
+    flex-direction: column-reverse;
+  }
+  // 允许换行
+  &.flex-wrap{
+    flex-wrap: wrap;
+  }
+  &.flex-nowrap {
+    flex-wrap: nowrap ;
+  }
+  &.flex-wrap-reverse {
+    flex-wrap: wrap-reverse ;
+  }
+  // 主轴方向 + 允许换行
+  &.flex-flow{
+    // flex-flow: <flex-direction> || <flex-wrap>;
+  }
+  // 多行时，交叉轴上的分部
+  &.align-content{
+    // 只适用多行的flex容器,flex容器中的子项不止一行时该属性才有效果
+    // flex容器在交叉轴上有多余的空间时,将子项作为一个整体进行对齐
+    // align-content: <flex-start> | <flex-end> | <center> | <space-between> | <space-around> | <stretch>
+  }
+  // main轴布局
+  &.main-start{
+    justify-content: flex-start;
+    text-align: start;
+  }
+  &.main-end{
+    justify-content: flex-end;
+    text-align: end;
+  }
+  &.main-center{
+    justify-content: center;
+    text-align: center;
+  }
+  &.main-between{
+    justify-content: space-between;
+  }
+  &.main-around{
+    justify-content: space-around;
+  }
+  &.main-gap{
+    column-gap: unset;  // Column Gap
+  }
+  // cross轴布局
+  &.cross-start{
+    align-items: flex-start;
+  }
+  &.cross-end{
+    align-items: flex-end;
+  }
+  &.cross-center{
+    align-items: center;
+  }
+  &.cross-baseline {    // 项目的第一行文字的基线对齐
+    align-items: baseline;
+  }
+  &.cross-stretch {     // 项目未设置高度或设为auto，将占满整个容器的高度
+    align-items: stretch;
+  }
+  &.cross-gap{
+    row-gap: unset;     // Row Gap
+  }
+  // item 布局
+  .item-flex{
+    flex: 1 1 auto;     // <'flex-grow'> <'flex-shrink'>? || <'flex-basis'>
+  }
+  .item-auto{
+    flex: 1 1 auto;
+    // flex: auto | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+  }
+  .item-none{
+    flex: 0 0 auto;
+    // flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+  }
+  .item-order{
+    order: 0;           // 定义项目的排列顺序，数值越小，排列越靠前，默认为0
+  }
+  .item-grow{
+    flex-grow: 0;       // 定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+  }
+  .item-shrink{
+    flex-shrink: 1;     // 定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+  }
+  .item-basis{
+    flex-basis: auto;   // 项目占据的主轴空间，如300px。它的默认值为auto
+  }
+  .item-self-auto{
+    align-self: auto;   // 继承父元素的align-items属性，如果没有父元素，则等同于stretch
+  }
+  .item-self-start{
+    align-self: flex-start;
+  }
+  .item-self-end{
+    align-self: flex-end;
+  }
+  .item-self-center{
+    align-self: center;
+  }
+  .item-self-baseline {
+    align-self: baseline;
+  }
+  .item-self-stretch{
+    align-self: stretch;
+  }
+  .item-right{
+    margin-left: auto;
+  }
+}

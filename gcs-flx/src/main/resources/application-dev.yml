@@ -1,0 +1,28 @@
+# App
+app:
+  name: sipfw_dev
+  log-path: /logs
+
+# GcsFlx
+gcs:
+  rootBase: "${user.home}/.sipfw_dev"
+  # 元视图自动初始化：dev 开启，启动播种 meta/seed/views/*.json（幂等，只补缺失）
+  meta-init:
+    enabled: true
+
+# DataSource
+spring:
+  datasource:
+    druid:
+      url: '${DB_URL:jdbc:postgresql://localhost:5432/sipfw}'
+      username: '${DB_USER:postgres}'
+      password: '${DB_PASSWORD:chendou}'
+
+# OtherConfig
+sip:
+  analysis:
+    enabled: true
+    sipgrep-path: /usr/local/bin/sipgrep
+    # 本机 IP 正则列表（判定呼叫方向）：
+    local-ip-regex-list:
+      - 127\.0\.0\.\d{1,3}

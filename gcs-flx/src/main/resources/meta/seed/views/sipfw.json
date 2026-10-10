@@ -1,0 +1,40 @@
+{
+  "seedKey": "sipfw",
+  "view": { "name": "超管视图" },
+  "menus": [
+    {
+      "title": "系统",
+      "icon": "setting",
+      "seqOrder": 1,
+      "children": [
+        {
+          "title": "组织结构",
+          "icon": "cluster",
+          "seqOrder": 1,
+          "page": { "component": "ref_GroupPage", "pdent": "SysGroup" }
+        },
+        {
+          "title": "用户角色",
+          "icon": "safety",
+          "seqOrder": 2,
+          "page": { "component": "ref_RolePage", "pdent": "SysRole" }
+        },
+        {
+          "title": "全局配置",
+          "icon": "tool",
+          "seqOrder": 3,
+          "page": { "component": "ref_ConfigPage", "pdent": "SysConfig" }
+        }
+      ]
+    },
+    {
+      "title": "SIP监控",
+      "icon": "compass",
+      "seqOrder": 999,
+      "page": {
+        "component": "ref_ot_SipfwPage",
+        "pdent": "DatavSipfwPage"
+      }
+    }
+  ]
+}

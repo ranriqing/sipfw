@@ -1,0 +1,47 @@
+@import "~ant-design-vue/dist/antd.less";
+@import "~ant-design-vue/lib/style/themes/default.less";
+
+// 主色系
+@primary-color: #039267;
+
+/* 黑色系菜单
+@menu-dark-color: @text-color-secondary-dark;
+@menu-dark-bg: @layout-header-background;
+@menu-dark-arrow-color: #fff;
+@menu-dark-submenu-bg: #000c17;
+@menu-dark-highlight-color: #fff;
+@menu-dark-item-active-bg: @primary-color;
+@menu-dark-selected-item-icon-color: @white;
+@menu-dark-selected-item-text-color: @white;
+@menu-dark-item-hover-bg: transparent;*/
+
+@menu-dark-color: @text-color-secondary-dark;
+@menu-dark-bg: @layout-header-background;
+@menu-dark-arrow-color: #fff;
+@menu-dark-submenu-bg: #000c17;
+@menu-dark-highlight-color: #fff;
+@menu-dark-item-active-bg: #060708;  // changed
+@menu-dark-selected-item-icon-color: @white;
+@menu-dark-selected-item-text-color: @white;
+@menu-dark-item-hover-bg: transparent;
+@import "~ant-design-vue/lib/menu/style/dark.less";
+.@{menu-prefix-cls} {
+  // dark theme
+  // ... ...
+  &-dark&-inline &-item,
+  &-dark&-vertical &-item,
+  &-dark&-vertical-left &-item,
+  &-dark&-vertical-right &-item {
+    left: 0;
+    margin-left: 0;
+    border-right: 0;
+    &::after {
+      // border-right: 0; chenhb changed
+      border-right: 5px solid @menu-highlight-color;
+    }
+  }
+  // ... ...
+}
+
+
+

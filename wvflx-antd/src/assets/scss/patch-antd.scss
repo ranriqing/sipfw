@@ -1,0 +1,279 @@
+.ant-divider{
+  &.ant-divider-horizontal{
+    &.ant-divider-with-text-center::before,
+    &.ant-divider-with-text-left::before,
+    &.ant-divider-with-text-right::before,
+    &.ant-divider-with-text-center::after,
+    &.ant-divider-with-text-left::after,
+    &.ant-divider-with-text-right::after{
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+
+/* @@@@@ 组件容器 @@@@@ */
+// AntCard
+.ant-layout-content{
+  // 缩小Padding
+  .ant-card-body{
+    padding: 15px 15px;
+  }
+  .ant-card-wider-padding .ant-card-body{
+    padding: 15px 15px;
+  }
+}
+.ant-card{
+  &.ant-card-wider-padding{
+    .ant-card-head {
+      min-height: 40px;
+      padding: 0 15px;
+      .ant-card-head-title {
+        padding: 12px 0;
+      }
+    }
+  }
+}
+
+// AntSelect
+.sc-select{
+  .ant-select{
+    .ant-select-selection__choice__content{
+      font-size: 0;
+    }
+  }
+}
+.ant-select-dropdown{
+  .ant-select-dropdown-menu {
+    .sc-select-item {
+      font-size: 0;
+    }
+  }
+}
+
+// AntModal
+.ant-modal{
+  .ant-modal-header{
+    .header-title{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .item-right{
+        margin-left: auto;
+        .icon-action{
+          cursor: pointer;
+        }
+        .iconfont{
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  // 缩小Padding
+  .ant-modal-body{
+    padding: 12px;
+  }
+}
+.ant-modal-confirm{
+  // 自定义选择列
+  &.pop-column-wrapper{
+    .choose-wrapper{
+      min-height: 60px;
+      max-height: 360px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .choose-item{
+        padding: 6px 8px;
+        cursor: pointer;
+        &:hover{
+          background: #DEEFFD;
+          box-shadow: 0 2px 2px 0 #e0e0e0;
+        }
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .title{
+
+        }
+        .icon{
+          color: #909399;
+        }
+        &.active{
+          background: rgba(241, 139, 98, 0.3);
+        }
+      }
+    }
+  }
+}
+
+// AntDrawer
+.ant-drawer{
+  .ant-drawer-header{
+    .header-title{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .item-right{
+        margin-left: auto;
+        .icon-action{
+          cursor: pointer;
+        }
+        .iconfont{
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  // 缩小Padding
+  .ant-drawer-body{
+    padding: 12px;
+  }
+}
+
+// AntTable
+.ant-table{
+  // 不允许换行
+  th, td{
+    white-space: nowrap;
+  }
+  .ant-table-title{
+    padding: 5px 0;
+  }
+  .ant-table-content{
+    clear: both;
+  }
+  // 水平滚动条问题
+  // https://github.com/ant-design/ant-design/issues/11390#issuecomment-410646901-permalink
+  .ant-table-scroll{
+    .ant-table-body{
+      overflow-x: auto!important;
+    }
+  }
+  .ant-table-fixed-left, .ant-table-fixed-right{
+    .ant-table-thead{
+      tr{
+        th{
+          padding: 16px 10px;
+        }
+      }
+    }
+    .ant-table-tbody{
+      tr{
+        td{
+          padding: 16px 10px;
+        }
+      }
+    }
+  }
+  .ant-table-tbody>tr{
+    td.colheader, td.rowheader{
+      color: rgba(0,0,0,.85);
+      font-weight: 500;
+      background: #fafafa;
+      border-bottom: 1px solid #e8e8e8;
+      transition: background .3s ease;
+    }
+    &:hover> td.colheader{
+      background: #fafafa;
+    }
+    &:hover> td.rowheader{
+      background: #fafafa;
+    }
+  }
+  // 行内编辑
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+  // 配置按钮
+  .config-switch{
+    display: inline-block;
+    line-height: 16px;
+  }
+}
+
+/* @@@@@ 组件元素 @@@@@ */
+.anticon{
+  &.text-tips{
+    color: #909399;
+  }
+  &.success{
+    color: #19be6b;
+  }
+  &.warning{
+    color: #ff9900;
+  }
+}
+
+// AntBtn
+.ant-btn{
+  &.ant-btn-link:hover{
+    background-color: #dee2e6;
+  }
+}
+
+// AntForm
+.ant-form {
+  .ant-form-item {
+    margin-bottom: 12px;
+  }
+}
+
+// AntDivider
+.ant-divider{
+  &.ant-divider-horizontal{
+    margin: 10px 0;
+  }
+}
+
+// AntUpload
+.ant-upload{
+  // 上传图片
+  .anticon-plus{
+    font-size: 32px;
+  }
+}
+
+// AntList
+.ant-list-item{
+  .ant-list-item-meta-title > a {
+    color: #039267;
+  }
+}
+
+// AntAudio(自定义)
+.audio-modal{
+  .ant-modal-mask, .ant-modal-wrap{
+    z-index: 1500;
+  }
+  .ant-audio-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.content-detail{
+  .v-note-wrapper{
+    &.markdown-body{
+      min-height: unset !important;
+      min-width: 500px;
+      background-color: transparent !important;
+      border: unset !important;
+      p{
+        margin-bottom: 0 !important;
+      }
+      .v-note-panel{
+        .v-note-show{
+          &.single-show{
+            .v-show-content{
+              padding: 4px 8px 4px 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

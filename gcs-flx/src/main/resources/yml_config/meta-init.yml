@@ -1,0 +1,14 @@
+# 元视图自动初始化：启动后直接进入可用状态。
+# 默认关闭；开启后读取 resources/meta/seed/views/*.json（一文件一视图）。
+gcs:
+  meta-init:
+    enabled: false
+    # 种子文件位置（classpath 通配）。省略即用此默认值。
+    seed-locations:
+      - "classpath*:meta/seed/views/*.json"
+    # 允许的 page component 白名单，留空 [] 则不校验。
+    allowed-components:
+      - ref_ot_SipfwPage
+      - ref_GroupPage
+      - ref_RolePage
+      - ref_ConfigPage

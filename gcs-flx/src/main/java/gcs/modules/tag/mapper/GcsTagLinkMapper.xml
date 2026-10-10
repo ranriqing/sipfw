@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gcs.modules.tag.mapper.GcsTagLinkMapper">
+    
+    <resultMap id="gcsTagLinkResult" type="GcsTagLink" >
+        <result property="id"              column="id"    />
+        <result property="gcsTagId"        column="gcs_tag_id"    />
+        <result property="referenceClass"  column="reference_class"    />
+        <result property="referenceId"     column="reference_id"    />
+        <result property="gcsTagName"      column="gcs_tag_name"    />
+        <result property="gcsTagColor"     column="gcs_tag_color"   />
+    </resultMap>
+
+    <sql id="selectRefTemplate">
+        SELECT l.*, t.name gcs_tag_name, t.color gcs_tag_color
+        FROM gcs_tag_link l
+        LEFT JOIN gcs_tag t ON l.gcs_tag_id = t.id
+    </sql>
+
+    <select id="selectListByReference" resultMap="gcsTagLinkResult">
+        <include refid="selectRefTemplate"/>
+        <where>
+            <if test="tagName != null "> AND t.name = #{tagName}</if>
+            AND l.reference_id = #{referenceId}
+            AND l.reference_class = #{referenceClass}
+        </where>
+    </select>
+
+    <select id="countByTagIds" resultType="map">
+        SELECT gcs_tag_id, COUNT(*) AS cnt
+        FROM gcs_tag_link
+        <if test="tagIds != null and tagIds.size() > 0">
+            WHERE gcs_tag_id IN
+            <foreach collection="tagIds" item="id" open="(" separator="," close=")">#{id}</foreach>
+        </if>
+        GROUP BY gcs_tag_id
+    </select>
+</mapper>

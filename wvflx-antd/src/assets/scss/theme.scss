@@ -1,0 +1,98 @@
+/* @@@@@ 主题定义 @@@@@ */
+// @import "~ant-design-vue/lib/style/themes/default.less";
+
+/* @@@@@ 主题颜色 @@@@@ */
+$primary-color: #039267;
+$primary-color-zero1: rgba(3, 146, 103, 0.1);
+$primary-color-zero2: rgba(3, 146, 103, 0.2);
+$primary-color-zero3: rgba(3, 146, 103, 0.3);
+$primary-color-zero4: rgba(3, 146, 103, 0.4);
+$primary-color-zero5: rgba(3, 146, 103, 0.5);
+$primary-color-zero6: rgba(3, 146, 103, 0.6);
+$primary-color-zero7: rgba(3, 146, 103, 0.7);
+$primary-color-zero8: rgba(3, 146, 103, 0.8);
+$primary-color-zero9: rgba(3, 146, 103, 0.9);
+$primary-color-zero10: rgba(3, 146, 103, 1.0);
+
+/* @@@@@ Tmpl颜色 @@@@@ */
+$tmpl-color-zero6: rgba(241, 139, 98, 0.6);
+$tmpl-color-zero8: rgba(241, 139, 98, 0.8);
+$tmpl-color-zero10: rgba(241, 139, 98, 1);
+
+/* @@@@@ 应用颜色 @@@@@ */
+$main-color: #303133;
+$content-color: #606266;
+$tips-color: #909399;
+$light-color: #c0c4cc;
+$border-color: #e4e7ed;
+$bg-color: #f3f4f6;
+
+$type-primary: #2979ff;
+$type-primary-disabled: #a0cfff;
+$type-primary-dark: #2b85e4;
+$type-primary-light: #ecf5ff;
+
+$type-warning: #ff9900;
+$type-warning-disabled: #fcbd71;
+$type-warning-dark: #f29100;
+$type-warning-light: #fdf6ec;
+
+$type-success: #19be6b;
+$type-success-disabled: #71d5a1;
+$type-success-dark: #18b566;
+$type-success-light: #dbf1e1;
+
+$type-error: #fa3534;
+$type-error-disabled: #fab6b6;
+$type-error-dark: #dd6161;
+$type-error-light: #fef0f0;
+
+$type-info: #909399;
+$type-info-disabled: #c8c9cc;
+$type-info-dark: #82848a;
+$type-info-light: #f4f4f5;
+
+// Font
+$font-xs: 10px;
+$font-sm: 12px;
+$font-md: 14px;
+$font-lg: 16px;
+$font-xl: 18px;
+
+/* @@@@@ 字号样式 @@@@@ */
+.font-xs {
+  font-size: $font-xs;
+}
+
+.font-sm {
+  font-size: $font-sm;
+}
+
+.font-md {
+  font-size: $font-md;
+}
+
+.font-lg {
+  font-size: $font-lg;
+}
+
+.font-xl {
+  font-size: $font-xl;
+}
+
+/* @@@@@ 字体样式 @@@@@ */
+.font-normal{
+  font-weight: normal;
+}
+
+.font-lighter{
+  font-weight: lighter;
+}
+
+.font-bold{
+  font-weight: bold;
+}
+
+.font-bolder{
+  font-weight: bolder;
+}

@@ -1,0 +1,491 @@
+@import '~@/assets/scss/theme.scss';
+
+// 元信息展示
+.lab-popover{
+  .lab-item{
+    display: flex;
+    flex-direction: row;
+    .title{
+      width: 60px;
+      color: #909399;
+      overflow: hidden;
+    }
+    .content{
+      width: 150px;
+    }
+  }
+}
+
+// 区块部分
+.tmpl-block{
+  // 配置部分
+  .left-wrapper, .config-wrapper {
+    a{
+      color: $tmpl-color-zero8;
+    }
+    .ant-btn{
+      color: $tmpl-color-zero8;
+      border: 1px dashed $tmpl-color-zero8;
+      &:hover, &:focus{
+        color: $tmpl-color-zero10;
+      }
+    }
+  }
+  // 拖拽标识
+  .ghost {
+    box-shadow: 0 -2px 0 #d9d9d9;
+  }
+  // 拖拽目的
+  .draggable-container{
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px dashed $tmpl-color-zero6;
+    border-radius: 5px;
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: 40px;
+    // 暂无组件
+    &:empty{
+      &:before
+      {
+        content:"添加组件到此处";
+        font-size: 16px;
+        color: $tmpl-color-zero6;
+        text-align: center;
+        display: block;
+      }
+    }
+    .chart-block{
+      box-shadow: 0 0 4px $tmpl-color-zero6;
+    }
+    // 拖拽Item
+    .drag-item {
+      position: relative;
+      &.active{
+        outline: 2px solid $tmpl-color-zero6;
+      }
+      // 操作按钮
+      .drag-item-action, .drag-item-widget{
+        position: absolute;
+        height: 28px;
+        line-height: 28px;
+        background: $tmpl-color-zero6;
+        z-index: 100;
+        i.anticon{
+          font-size: 16px;
+          color: #fff;
+          margin: 0 3px;
+        }
+      }
+      .drag-item-action{
+        right: 0;
+        bottom: 0;
+        i.anticon{
+          cursor: pointer;
+        }
+      }
+      .drag-item-widget{
+        left: 0;
+        top: 0;
+        i.anticon{
+          cursor: move;
+        }
+      }
+    }
+    // 拖拽表头
+    &.draggable-table-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 6px;
+    }
+    // 拖拽表头
+    &.draggable-report-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 6px;
+    }
+  }
+  // 拖拽起点
+  ul.draggable-fields{
+    margin-bottom: 0;
+    padding-inline-start: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+    }
+    li.exist{
+      .ant-btn {
+        font-style: italic;
+        color: green;
+      }
+    }
+    .ant-btn {
+      width: 150px;
+      border: 1px dashed #d9d9d9;
+      &:hover{
+        border-color: $tmpl-color-zero10;
+      }
+      border-radius: 0;
+      margin: 5px;
+      cursor: move;
+      background: #F4F6FC;
+    }
+  }
+}
+
+// 弹窗Pops
+.tmpl-pops-wrapper{
+  margin-bottom: 12px;
+  .tmpl-block{
+    &.page-block{
+      box-shadow: 0 0 4px $tmpl-color-zero6;
+    }
+    .draggable-pop-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 6px;
+      flex: 1;
+      // 暂无组件
+      &:empty{
+        &:before
+        {
+          content:"弹窗组件";
+          font-size: 16px;
+          color: $tmpl-color-zero6;
+          text-align: center;
+          display: block;
+        }
+      }
+      // 拖拽条目
+      .draggable-pop{
+        display: inline-block;
+        align-items: center;
+        color: $tmpl-color-zero8;
+        border: 1px solid $tmpl-color-zero8;
+        border-radius: 5px;
+        width: 200px;
+        position: relative;
+        margin-right: 10px;
+        // 条目内容
+        .pop-item {
+          display: inline-block;
+          padding: 5px 2px;
+        }
+        .drag{
+          font-size: 14px;
+          padding: 4px 2px 4px 6px;
+          cursor: move;
+        }
+        // 条目操作按钮
+        .item-actions{
+          position: absolute;
+          top: 3px;
+          right: 4px;
+          opacity: 0;
+          .icon-action {
+            vertical-align: baseline;
+            font-size: 14px;
+            padding: 4px 0;
+            transform: translateY(2px);
+            transition: all .3s;
+            cursor: pointer;
+            color: $tmpl-color-zero6;
+            &:hover{
+              color: $tmpl-color-zero10;
+            }
+          }
+        }
+        &:hover {
+          background-color: #fafafa;
+          .item-actions {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .pop-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      .config-wrapper{
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+// 页面Parts
+.page-parts-wrapper {
+  .tmpl-block {
+    &.page-block {
+      box-shadow: 0 0 4px $tmpl-color-zero6;
+    }
+  }
+  // 拖拽Item
+  .part-wrapper {
+    &.tmpl-wrapper{
+      position: relative;
+      &.active{
+        outline: 2px solid $tmpl-color-zero6;
+      }
+      // 操作按钮
+      .wrapper-actions{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 6px 0 0;
+        .part-wrapper-widget{
+          color: $tmpl-color-zero6;
+          &:hover{
+            color: $tmpl-color-zero10;
+          }
+          i.anticon{
+            cursor: move;
+          }
+        }
+        .part-wrapper-title{
+          margin-left: 8px;
+          color: $tmpl-color-zero6;
+        }
+        .part-wrapper-action{
+          color: $tmpl-color-zero6;
+          &:hover{
+            color: $tmpl-color-zero10;
+          }
+          margin-left: auto;
+          i.anticon{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 查询扩展
+.page-query-wrapper {
+  .tmpl-block{
+    .drag-item{
+      padding-top: 10px;
+    }
+    .ghost{
+      // .ant-col-md-8
+      display: block;
+      float: left;
+      flex: 0 0 auto;
+      width: 33.33%;
+    }
+    .draggable-fields{
+      .ghost{
+        display: inline;
+        float: unset;
+        width: unset;
+        box-shadow: unset;
+      }
+    }
+    .query-bottom{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: start;
+      .config-wrapper{
+        margin-left: auto;
+      }
+    }
+  }
+
+}
+// 表格扩展 && 流程扩展
+.page-table-wrapper,
+.page-flow-wrapper{
+  .tmpl-block{
+    .table-operation-buttons {
+      .config-wrapper{
+        margin-left: auto;
+        .flow{
+          display: inline-block;
+          color: $tmpl-color-zero6;
+        }
+      }
+    }
+    .draggable-columns-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 6px;
+      flex: 1;
+      // 暂无组件
+      &:empty{
+        &:before
+        {
+          flex: 1;
+          content:"添加组件到此处";
+          font-size: 16px;
+          color: $tmpl-color-zero6;
+          text-align: center;
+          display: block;
+        }
+      }
+      // 拖拽条目
+      .draggable-column{
+        display: inline-block;
+        align-items: center;
+        border: 1px solid #e5e5e5;
+        width: 180px;
+        position: relative;
+        margin-left: 5px;
+        // 条目内容
+        .column-item {
+          display: inline-block;
+          padding: 5px 2px;
+        }
+        .drag{
+          font-size: 14px;
+          padding: 4px 2px 4px 6px;
+          cursor: move;
+        }
+        // 条目操作按钮
+        .item-actions{
+          position: absolute;
+          top: 3px;
+          right: 4px;
+          opacity: 0;
+          .icon-action {
+            vertical-align: baseline;
+            font-size: 14px;
+            padding: 4px 0;
+            transform: translateY(2px);
+            transition: all .3s;
+            cursor: pointer;
+            color: $tmpl-color-zero6;
+            &:hover{
+              color: $tmpl-color-zero10;
+            }
+          }
+        }
+        &:hover {
+          background-color: #fafafa;
+          .item-actions {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 图表扩展
+.page-chart-wrapper,
+.page-widget-wrapper{
+  .tmpl-block {
+
+  }
+}
+
+// 报表扩展
+.page-report-wrapper, .page-dynrpt-wrapper {
+  .tmpl-block{
+    .report-operation-buttons {
+      .config-wrapper{
+        margin-left: auto;
+      }
+    }
+    .draggable-columns-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 6px;
+      flex: 1;
+      // 暂无组件
+      &:empty{
+        &:before
+        {
+          flex: 1;
+          content:"添加组件到此处";
+          font-size: 16px;
+          color: $tmpl-color-zero6;
+          text-align: center;
+          display: block;
+        }
+      }
+      // 拖拽条目
+      .draggable-column{
+        display: inline-block;
+        align-items: center;
+        border: 1px solid #e5e5e5;
+        width: 180px;
+        position: relative;
+        margin-left: 5px;
+        // 条目内容
+        .column-item {
+          display: inline-block;
+          padding: 5px 2px;
+        }
+        .drag{
+          font-size: 14px;
+          padding: 4px 2px 4px 6px;
+          cursor: move;
+        }
+        // 条目操作按钮
+        .item-actions{
+          position: absolute;
+          top: 3px;
+          right: 4px;
+          opacity: 0;
+          .icon-action {
+            vertical-align: baseline;
+            font-size: 14px;
+            padding: 4px 0;
+            transform: translateY(2px);
+            transition: all .3s;
+            cursor: pointer;
+            color: $tmpl-color-zero6;
+            &:hover{
+              color: $tmpl-color-zero10;
+            }
+          }
+        }
+        &:hover {
+          background-color: #fafafa;
+          .item-actions {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Markdown扩展
+.page-mdown-wrapper{
+  .tmpl-block{
+    .mdown-bottom{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: start;
+      .config-wrapper{
+        margin-left: auto;
+        padding: 8px 15px;
+      }
+    }
+  }
+}
+
+// 弹窗样式
+.pop-form{
+  &.tmpl-block{
+    .pop-operation-buttons{
+      .config-wrapper{
+        margin-left: auto;
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "_comment": "惰性示例：扩展名不是 .json，不会被扫描。复制为 ops.json 并改内容后即可生效（需先开启 gcs.meta-init.enabled）。",
+  "seedKey": "ops",
+  "view": {
+    "name": "运维视图",
+    "type": 0,
+    "icon": "team",
+    "seqOrder": 10
+  },
+  "menus": [
+    {
+      "title": "全局配置",
+      "icon": "compass",
+      "seqOrder": 1,
+      "page": {
+        "component": "ref_ConfigPage",
+        "pdent": "SysConfig"
+      }
+    },
+    {
+      "title": "组织结构",
+      "icon": "home",
+      "seqOrder": 2,
+      "page": {
+        "component": "ref_GroupPage",
+        "pdent": "SysGroup"
+      }
+    },
+    {
+      "title": "用户角色",
+      "icon": "crown",
+      "seqOrder": 3,
+      "page": {
+        "component": "ref_RolePage",
+        "pdent": "SysRole"
+      }
+    }
+  ]
+}

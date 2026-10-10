@@ -1,0 +1,163 @@
+/* @@@@@ 需要整理 @@@@@ */
+.flo-start{
+  // width: 550px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .item-wrapper{
+    border-radius: 6px;
+    padding: 8px 10px;
+    background-color: #f6f6f2;
+    margin-bottom: 10px;
+    &:hover{
+      background: #DEEFFD;
+      box-shadow: 0 2px 2px 0 #e0e0e0;
+      cursor: pointer;
+    }
+  }
+}
+
+/* @@@@@ 页面样式 @@@@@ */
+.page{
+  // 区块部分
+  .page-block{
+    height: 100%;
+    position: relative;
+  }
+  // 图表部分
+  .page-chart{
+    .chart-header {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      color: rgba(0, 0, 0, .45);
+      font-size: 14px;
+      line-height: 22px;
+      .header-action {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  // 包装Parts
+  .page-parts-wrapper {
+    .part-wrapper {
+      display: flex;
+      flex-direction: column;
+      .page-query-wrapper,
+      .page-table-wrapper,
+      .page-chart-wrapper,
+      .page-report-wrapper,
+      .page-dynrpt-wrapper,
+      .page-mdown-wrapper,
+      .page-flow-wrapper,
+      .page-widget-wrapper{
+        height: 100%;
+      }
+    }
+  }
+  // 空白部分
+  .page-empty-wrapper {
+    min-height: 560px;
+    .ant-empty-image {
+      height: auto;
+      img{
+        width: 380px;
+        object-fit: cover;
+      }
+    }
+    .ant-empty-description{
+      // nothing
+    }
+  }
+  // 查询部分
+  .page-query-wrapper {
+    width: 100%;
+    .ant-form-inline {
+      .ant-form-item {
+        display: flex;
+        margin-bottom: 12px;
+        margin-right: 0;
+        .ant-form-item-control-wrapper {
+          flex: 1 1;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .ant-form-item-label {
+          line-height: 32px;
+          padding-right: 8px;
+          width: auto;
+        }
+        .ant-form-item-control {
+          height: 32px;
+          line-height: 32px;
+        }
+      }
+    }
+    .query-submit-buttons {
+      display: inline-block;
+      white-space: nowrap;
+      .reset-btn{
+        margin-left: 8px
+      }
+    }
+  }
+  // 表格部分 && 流程部分
+  .page-table-wrapper,
+  .page-flow-wrapper{
+    width: 100%;
+    .table-operation-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      .item-right{
+        margin-left: auto;
+      }
+    }
+  }
+  // 图表部分
+  .page-chart-wrapper,
+  .page-widget-wrapper{
+    width: 100%;
+  }
+  // 报表部分
+  .page-report-wrapper, .page-dynrpt-wrapper{
+    width: 100%;
+    .report-operation-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      .item-right{
+        margin-left: auto;
+      }
+    }
+  }
+  // Markdown部分
+  .page-mdown-wrapper{
+    width: 100%;
+    .v-note-wrapper{
+      min-height: 18px;
+      z-index: 99;
+      .v-note-show{
+        .v-show-content{
+          padding: 15px;
+          p{
+            &:last-of-type{
+              margin-bottom: 0;
+            }
+          }
+        }
+        img{
+          max-width: 980px;
+        }
+      }
+    }
+  }
+}

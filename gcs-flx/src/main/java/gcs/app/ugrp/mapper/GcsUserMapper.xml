@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gcs.app.ugrp.mapper.GcsUserMapper">
+
+    <select id="listPermissions" resultType="string">
+        SELECT p.value
+        FROM gcs_permission p
+        LEFT JOIN gcs_role r on r.id = p.role_id
+        LEFT JOIN gcs_user u on u.gcs_role_id = r.id
+        WHERE 1 = 1
+        <if test="userId!=null">
+            AND u.id = #{userId}
+        </if>
+    </select>
+
+</mapper>
